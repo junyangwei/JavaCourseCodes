@@ -20,7 +20,8 @@ public class ThreadLocalDemo {
     
     public static void main(String[] args) {
         ThreadLocalDemo threadLocalMain = new ThreadLocalDemo();
-    
+
+        // 使用本地线程的实例对象，新建三个线程后，ThreadLocal 对象属性在各自线程中互不影响
         SnThread client1 = new SnThread(threadLocalMain);
         SnThread client2 = new SnThread(threadLocalMain);
         SnThread client3 = new SnThread(threadLocalMain);

@@ -5,13 +5,10 @@ public class AtomicMain {
 
     public static void main(String[] args) {
         final SyncCount count = new SyncCount();
-        for (int i = 0; i < 100; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int j = 0; j < 10000; j++) {
-                        count.add(); 
-                    }
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                for (int j = 0; j < 10000; j++) {
+                    count.add();
                 }
             }).start();
         }

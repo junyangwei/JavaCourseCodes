@@ -22,4 +22,16 @@ public class ReentrantLockDemo {
             }.start();
         }
     }
+
+    /*
+    Thread-0 get begin
+    Thread-0 get end
+    Thread-1 get begin
+    Thread-1 get end
+    Thread-2 put begin
+    Thread-2 put end
+    Thread-3 put begin
+    Thread-3 put end
+    读互斥、写互斥，都需要争抢锁
+     */
 }

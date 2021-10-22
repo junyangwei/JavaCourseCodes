@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 public class NewFixedThreadPoolDemo {
 
     public static void main(String[] args) {
+        // 构造一个固定大小为16的线程池
         ExecutorService executorService = Executors.newFixedThreadPool(16);
         for (int i = 0; i < 100; i++) {
             final int no = i;

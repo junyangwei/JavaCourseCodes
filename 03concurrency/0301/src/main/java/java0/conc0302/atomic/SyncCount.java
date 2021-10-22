@@ -10,6 +10,9 @@ public class SyncCount {
 
     private Lock lock = new ReentrantLock(true);
 
+    /**
+     * 显示的使用 Lock 来加锁和解锁
+     */
     public int add() {
         try {
             lock.lock();

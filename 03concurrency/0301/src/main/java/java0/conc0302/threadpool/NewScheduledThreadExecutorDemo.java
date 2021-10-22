@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class NewScheduledThreadExecutorDemo {
 
     public static void main(String[] args) {
-
+        // 创建一个线程池，可以安排命令在指定延迟时间 / 定期执行
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(16);
 
         for (int i = 0; i < 100; i++) {

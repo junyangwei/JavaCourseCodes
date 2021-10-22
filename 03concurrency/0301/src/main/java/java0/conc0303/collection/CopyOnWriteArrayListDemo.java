@@ -22,7 +22,9 @@ public class CopyOnWriteArrayListDemo {
         for (int i = 0; i < 10000; i++) {
             list.add(i);
         }
-    
+
+        // 构建两个新的线程，一读一写，查看结果
+        // 如果线程不安全会报错：java.util.ConcurrentModificationException
         T1 t1 = new T1(list);
         T2 t2 = new T2(list);
         t1.start();

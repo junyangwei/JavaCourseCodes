@@ -6,14 +6,9 @@ import java.util.concurrent.*;
 public class FutureTask1 {
     public static void main(String[] args) {
         //第一种方式
-        FutureTask<Integer> task = new FutureTask<Integer>(new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                return new Random().nextInt();
-            }
-        });
+        FutureTask<Integer> task = new FutureTask<Integer>(() -> new Random().nextInt());
         new Thread(task).start();
-        //第二种方方式
+        //第二种方方式（创建线程池来执行这个Runnable接口的实例）
 //        ExecutorService executor = Executors.newSingleThreadExecutor();
 //        FutureTask<Integer> task = new FutureTask<Integer>(new Callable<Integer>() {
 //            @Override

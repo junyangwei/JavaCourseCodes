@@ -10,7 +10,7 @@ public class CountDownLatchDemo2 {
     private final static int threadCount = 200;
     
     public static void main(String[] args) throws Exception {
-        
+
         ExecutorService exec = Executors.newCachedThreadPool();
         
         final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
@@ -30,7 +30,7 @@ public class CountDownLatchDemo2 {
         }
         countDownLatch.await();
         System.out.println("==>所有程序员完成任务，项目顺利上线！");
-        //exec.shutdown();
+        exec.shutdown();
     }
     
     private static void test(int threadNum) throws Exception {

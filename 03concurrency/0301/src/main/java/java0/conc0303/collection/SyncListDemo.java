@@ -21,14 +21,12 @@ public class SyncListDemo {
         // to do something
     
         System.out.println(Arrays.toString(list1.toArray()));
-    
+
+        // 将集合对象 list1 中的顺序打乱
         Collections.shuffle(list1);
-    
-        
-    
+
         System.out.println(Arrays.toString(list1.toArray()));
-        
-        
+
         // 假如不再修改
         
         List list2 = Collections.unmodifiableList(list1);

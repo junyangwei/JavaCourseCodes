@@ -8,6 +8,7 @@ import java.util.concurrent.ScheduledExecutorService;
 public class ExecutorServiceDemo {
 
     public static void main(String[] args) {
+        // 创建一个线程池，可以安排命令在指定延迟时间 / 定期执行
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(16);
         try {
             String str = executorService.submit(new Callable<String>() {
@@ -21,6 +22,9 @@ public class ExecutorServiceDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        executorService.shutdown();
+        System.out.println("Main Thread End!");
     }
 
 }

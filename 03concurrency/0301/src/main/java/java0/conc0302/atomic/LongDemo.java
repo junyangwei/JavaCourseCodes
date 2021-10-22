@@ -10,14 +10,11 @@ public class LongDemo {
         final AtomicLong atomicLong = new AtomicLong();
         final LongAdder longAdder = new LongAdder();
         
-        for (int i = 0; i < 100; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int j = 0; j < 10000; j++) {
-                        atomicLong.getAndIncrement();
-                        longAdder.increment();
-                    }
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                for (int j = 0; j < 10000; j++) {
+                    atomicLong.getAndIncrement();
+                    longAdder.increment();
                 }
             }).start();
         }

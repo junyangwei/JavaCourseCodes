@@ -27,28 +27,22 @@ public class Thread3 {
     }
 
     private void m4t1(Inner inner) {
-        synchronized (inner) { //使用对象锁
+        // 使用对象锁
+        synchronized (inner) {
             inner.m4t1();
         }
     }
 
     private void m4t2(Inner inner) {
+        // m4t2 方法没有使用对象锁，因此可以让其他线程并行执行该方法
         inner.m4t2();
     }
 
     public static void main(String[] args) {
         final Thread3 myt3 = new Thread3();
         final Inner inner = myt3.new Inner();
-        Thread t1 = new Thread(new Runnable() {
-            public void run() {
-                myt3.m4t1(inner);
-            }
-        }, "t1");
-        Thread t2 = new Thread(new Runnable() {
-            public void run() {
-                myt3.m4t2(inner);
-            }
-        }, "t2");
+        Thread t1 = new Thread(() -> myt3.m4t1(inner), "t1");
+        Thread t2 = new Thread(() -> myt3.m4t2(inner), "t2");
         t1.start();
         t2.start();
     }

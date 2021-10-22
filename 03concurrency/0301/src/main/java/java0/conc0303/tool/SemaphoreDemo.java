@@ -5,10 +5,13 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreDemo {
     
     public static void main(String[] args) {
-        int N = 8;            //工人数
-        Semaphore semaphore = new Semaphore(2); //机器数目
-        for (int i = 0; i < N; i++)
+        // 工人数（待创建的并发线程数）
+        int N = 8;
+        // 机器数目（使用信号量控制同一时间并发线程数为2）
+        Semaphore semaphore = new Semaphore(2);
+        for (int i = 0; i < N; i++) {
             new Worker(i, semaphore).start();
+        }
     }
     
     static class Worker extends Thread {

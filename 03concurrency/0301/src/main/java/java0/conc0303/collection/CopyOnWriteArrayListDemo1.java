@@ -23,8 +23,13 @@ public class CopyOnWriteArrayListDemo1 {
     }
     
     private void start() {
+        // 初始化 mList 对象，为其构造数据
         initData();
+        // 构建固定大小值为10的线程池
         ExecutorService service = Executors.newFixedThreadPool(THREAD_POOL_MAX_NUM);
+
+        // 循环十次，将一读，一写的任务交给线程池来执行
+        // 和CopyOnWriteArrayListDemo一样，如果集合不能保证读和写的线程安全，将会报错：java.util.ConcurrentModificationException
         for (int i = 0; i < THREAD_POOL_MAX_NUM; i++) {
             service.execute(new ListReader(this.mList));
             service.execute(new ListWriter(this.mList, i));

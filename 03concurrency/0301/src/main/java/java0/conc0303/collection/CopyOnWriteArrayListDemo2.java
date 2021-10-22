@@ -14,36 +14,30 @@ public class CopyOnWriteArrayListDemo2 {
         test();
     }
     public static void test(){
-        for(int i = 0; i<10000; i++){
+        for(int i = 0; i < 10000; i++){
             list.add("string" + i);
         }
         
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    if (list.size() > 0) {    // todo ： 下一个get操作执行时，size可能已经是0了
-                        String content = list.get(list.size() - 1);
-                    }else {
-                        break;
-                    }
+        new Thread(() -> {
+            while (true) {
+                if (list.size() > 0) {    // todo ： 下一个get操作执行时，size可能已经是0了
+                    String content = list.get(list.size() - 1);
+                }else {
+                    break;
                 }
             }
         }).start();
         
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    if(list.size() <= 0){
-                        break;
-                    }
-                    list.remove(0);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        new Thread(() -> {
+            while (true) {
+                if(list.size() <= 0){
+                    break;
+                }
+                list.remove(0);
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }).start();
