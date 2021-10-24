@@ -8,7 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringDemo01 {
     
     public static void main(String[] args) {
-        
+        // 为了更加方便查看 Spring 的执行过程，将 Student 和 Klass 都在配置文件中注册了 Bean
+
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        Student student123 = context.getBean(Student.class);
         

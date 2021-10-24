@@ -40,7 +40,8 @@
     <bean id="aop1" class="io.kimmking.spring02.Aop1" />
     
     <bean id="aop2" class="io.kimmking.spring02.Aop2" />
-    
+
+    <!-- 是否强制使用字节码增强技术 -->
 <!--    <aop:aspectj-autoproxy proxy-target-class="true" />-->
     <aop:aspectj-autoproxy  />
     
